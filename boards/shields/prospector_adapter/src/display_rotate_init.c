@@ -22,10 +22,11 @@ int disp_set_orientation(void)
 		case 3:
 			int ret = display_set_orientation(display, DISPLAY_ORIENTATION_ROTATED_270);
 		break;
-		default:
-			int ret = display_set_orientation(display, DISPLAY_ORIENTATION_NORMAL);
-		break;
-			#endif
+	default:
+		int ret = display_set_orientation(display, DISPLAY_ORIENTATION_NORMAL);
+	break;
+	}
+#endif
 	if (ret < 0)
 	{
 		return ret;
