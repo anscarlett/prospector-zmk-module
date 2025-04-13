@@ -4,6 +4,7 @@
 
 int disp_set_orientation(void)
 {
+	int ret = 0;
 	// Set the orientation
 	const struct device *display = DEVICE_DT_GET(DT_CHOSEN(zephyr_display));
 	if (!device_is_ready(display))
@@ -14,17 +15,17 @@ int disp_set_orientation(void)
 #ifdef CONFIG_PROSPECTOR_ROTATE_DISPLAY
 	switch (CONFIG_PROSPECTOR_ROTATE_DISPLAY) {
   		case 1:
-			int ret = display_set_orientation(display, DISPLAY_ORIENTATION_ROTATED_90);
-    	break;
+			ret = display_set_orientation(display, DISPLAY_ORIENTATION_ROTATED_90);
+    		break;
   		case 2:
-			int ret = display_set_orientation(display, DISPLAY_ORIENTATION_ROTATED_180);
-    	break;
+			ret = display_set_orientation(display, DISPLAY_ORIENTATION_ROTATED_180);
+    		break;
 		case 3:
-			int ret = display_set_orientation(display, DISPLAY_ORIENTATION_ROTATED_270);
+			ret = display_set_orientation(display, DISPLAY_ORIENTATION_ROTATED_270);
 		break;
-	default:
-		int ret = display_set_orientation(display, DISPLAY_ORIENTATION_NORMAL);
-	break;
+		default:
+			ret = display_set_orientation(display, DISPLAY_ORIENTATION_NORMAL);
+		break;
 	}
 #endif
 	if (ret < 0)
